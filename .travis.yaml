@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t andgandolfi/docker-react .
+
+script:
+  - docker run -e CI=true andgandolfi/docker-react npm run test
